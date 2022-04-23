@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: monospace;
+    }
+
+    .game {
+      display: inline-block;
+      border: 2px solid #f8aa4b;
+    }
+
+    .game-row {
+      display: flex;
+    }
+
+    .square {
+      background-color: #ffcb00;
+      width: 36px;
+      height: 36px;
+      border: 2px solid #f8aa4b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #072448;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="#">
+    <label for="row">
+      Row
+      <input type="text" name="row" class="row" id="row" value="12">
+    </label>
+    <label for="stw">
+      Score to win
+      <input type="text" name="stw" class="stw" id="stw" value="4">
+    </label>
+    <button type="submit" class="reset">Reset</button>
+  </form>
+  <br>
+  <div class="game"></div>
+</body>
+
+<script>
+  const row = document.querySelector('.row');
+  const stw = document.querySelector('.stw');
+  const gameTable = document.querySelector('.game');
+  const form = document.querySelector('form');
+
+  const gameContext = {
+    row: parseInt(row.value) || 3,
+    scoreToWin: parseInt(stw.value) || 3,
+    nextPlayer: 'X',
+    board: []
+  };
+
+  startGame();
+  form.addEventListener('submit', e => { e.preventDefault(); startGame(); });
+
+  function startGame() {
+    // Set the next player
+    gameContext.nextPlayer = 'X';
+    // Set the row
+    gameContext.row = parseInt(row.value) || 8;
+    // Set the score to win
+    gameContext.scoreToWin = parseInt(stw.value) || 3;
+
+    // Generate data for game
+    gameContext.board = Array.from({ length: gameContext.row }, () => Array(gameContext.row).fill('-'));
+
+    /*
+      [
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ['-', '-', '-']
+      ]
+     */
+
+    // Clear game textContent
+    gameTable.textContent = '';
+
+    // Generate game table rows and columns
+    for (let r = 0; r < gameContext.row; r++) {
+      // Create row
+      const gRow = document.createElement('div');
+      // Assign `game-row` to row's class
+      gRow.classList.add('game-row');
+
+      for (let c = 0; c < gameContext.row; c++) {
+        // Create column
+        const square = document.createElement('div');
+        // Assign `square` to column's class
+        square.classList.add('square');
+        // Set data-pos attribute
+        square.setAttribute('data-pos', r + ':' + c);
+        // Add event listener to column
+        square.addEventListener('click', updateGame);
+        // Append the column to the row
+        gRow.appendChild(square);
+      }
+      // Append the row to the game table
+      gameTable.appendChild(gRow);
+    }
+  }
+
+  function updateGame(e) {
+    // Select row and col position
+    const [row, col] = this.dataset.pos.split(':').map(Number);
+
+    // Check if this position has been taken then stop
+    if (gameContext.board[row][col] !== '-') {
+      return;
+    }
+
+    // Update column textContent
+    // Update nextPlayer
+    if (gameContext.nextPlayer === 'X') {
+      this.textContent = 'X';
+      gameContext.nextPlayer = 'O';
+    } else {
+      this.textContent = 'O';
+      gameContext.nextPlayer = 'X';
+    }
+
+    // Update game data
+    gameContext.board[row][col] = this.textContent;
+    // Check winner
+    setTimeout(() => checkWinner(row, col), 0);
+  }
+
+  function checkWinner(r, c) {
+    const { scoreToWin, row } = gameContext;
+    const winnerPath = gameContext.board[r][c].repeat(scoreToWin);
+
+    let startR = 0;
+    let startC = 0;
+
+    if (r > c) {
+      startR = r - c;
+      startC = 0;
+    } else if (r < c) {
+      startR = 0;
+      startC = c - r;
+    }
+
+    let mr = startR;
+    let mc = startC;
+    let lrpath = '';
+
+    while (mr < row && mc < row) {
+      lrpath += gameContext.board[mr][mc];
+      mr++;
+      mc++;
+    }
+
+    startR = row - 1;
+    startC = 0;
+
+    if ((row - 1 - r) > c) {
+      startR = r + c;
+      startC = 0;
+    } else if ((row - 1 - r) < c) {
+      startR = row - 1;
+      startC = c - (row - 1 - r);
+    }
+
+    let rlpath = '';
+    mr = startR;
+    mc = startC;
+
+    while (mr >= 0 && mc < row) {
+      rlpath += gameContext.board[mr][mc];
+      mr--;
+      mc++;
+    }
+
+    if (
+      gameContext.board[r].join('').includes(winnerPath)
+      || gameContext.board.map(row => row[c]).join('').includes(winnerPath)
+      || lrpath.includes(winnerPath)
+      || rlpath.includes(winnerPath)
+    ) {
+      alert('The winner is: ' + gameContext.board[r][c]);
+      startGame();
+    }
+  }
+</script>
+
+</html>

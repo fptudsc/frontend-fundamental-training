@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulating Styles</title>
+</head>
+
+<body>
+  <script>
+    function changeText() {
+      var p = document.getElementById('pid');
+
+      p.style.color = 'blue';
+      p.style.fontSize = '18pt';
+    }
+  </script>
+  </head>
+
+  <body>
+
+    <p id="pid" onclick="window.location.href = 'http://www.cnn.com/';">linker</p>
+
+    <form>
+      <p><input value="rec" type="button" onclick="changeText();" /></p>
+    </form>
+  </body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    table {
+      border: 2px solid #3b9393;
+    }
+
+    thead th {
+      background-color: #54d2d2;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    thead {
+      display: block;
+    }
+
+    tbody {
+      display: block;
+      max-height: 500px;
+      overflow-y: scroll;
+
+    }
+
+    td,
+    th {
+      width: 40px;
+      height: 40px;
+      background-color: #d9ffff;
+      text-align: center;
+      border: 1px solid #ddd;
+      color: #735e3b;
+      font-family: Roboto;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="#">
+    <label for="row">
+      Row
+      <input type="text" name="row" class="row" id="row" value="1000">
+    </label>
+    <label for="col">
+      Column
+      <input type="text" name="col" class="col" id="col" value="16">
+    </label>
+    <button type="submit" class="create">Create</button>
+  </form>
+  <br>
+  <table class="table">
+    <thead></thead>
+    <tbody></tbody>
+  </table>
+</body>
+<script>
+  const table = document.querySelector('.table');
+  const form = document.querySelector('form');
+  const thead = document.querySelector('thead');
+  const tbody = document.querySelector('tbody');
+
+  let data = [];
+  let sortedData = [];
+  let isSorted = false;
+  let sortCol = null;
+  let lastRenderedRow = 0;
+  let row = 0;
+  let col = 0;
+
+  generateData();
+  renderHeader();
+  renderData(data, lastRenderedRow, 100);
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    generateData();
+
+    tbody.textContent = '';
+    tbody.scrollTop = 0;
+    lastRenderedRow = 0;
+    renderHeader();
+    renderData(data, lastRenderedRow, 100);
+  });
+  tbody.addEventListener('scroll', renderNewRows);
+
+  function generateData() {
+    // Select row and column input
+    row = form.elements.row.value;
+    col = form.elements.col.value;
+
+    // Generate random data
+    data = Array.from(
+      { length: row },
+      () => Array.from(
+        { length: col },
+        () => randNum(1, 1000)
+      )
+    );
+  }
+
+  /*
+
+    row: 3
+    col: 5
+
+    [
+      [1, 2, 3, 4, 5],
+      [],
+      []
+    ]
+
+  */
+
+  function renderHeader() {
+    // Render header of table
+    // Header template <th class="sort-col" data-col="${i}">${i}</th>
+    thead.innerHTML = '<tr>'
+      + Array.from({ length: col }, (v, i) => `<th class="sort-col" data-col="${i}">${i}</th>`).join('')
+      + '</tr>';
+
+    // Add event listener to each th
+    document.querySelectorAll('.sort-col').forEach(c => c.addEventListener('click', sortDataByCol));
+  }
+
+  function renderData(data, minRow, maxRow) {
+    // Loop through random data and generate tr (row) and td (column)
+    for (let r = minRow; r < row && r < maxRow; r++) {
+      // Create tr
+      const rowElement = document.createElement('tr');
+
+      for (let c = 0; c < col; c++) {
+        // Create td
+        const colElement = document.createElement('td');
+        // Assign textContent to td
+        // Hint: get data from data[r][c]
+        colElement.textContent = data[r][c];
+        // Append td to tr
+        rowElement.appendChild(colElement);
+      }
+      // Append tr to thead
+      tbody.appendChild(rowElement);
+    }
+
+    // Keep track of last rendered row for lazy loading purpose
+    lastRenderedRow = maxRow;
+  }
+
+  function renderNewRows(e) {
+    // Check if user has scroll to the bottom of the tbody or not
+    if (tbody.scrollTop + tbody.clientHeight === tbody.scrollHeight) {
+      if (isSorted) {
+        // Render next 100 rows with sorted data
+        renderData(sortedData, lastRenderedRow, lastRenderedRow + 100);
+      } else {
+        // Render next 100 rows
+        renderData(data, lastRenderedRow, lastRenderedRow + 100);
+      }
+    }
+  }
+
+  function sortDataByCol(e) {
+    // Get column number by data-col attribute
+    const c = this.dataset.col;
+    // Set flag isSorted true
+    isSorted = true;
+    // Set sortCol = colNumber
+    sortCol = c;
+    debugger;
+    // Sort the data and assign thee result to sortedData variable
+    sortedData = data.sort((a, b) => a[c] - b[c]); // 1 \\ -1
+    // Remove tbody textContent
+    tbody.textContent = '';
+    // Scroll to top of tbody
+    tbody.scrollTop = 0;
+    // Set lastRenderedRow to 0
+    lastRenderedRow = 0;
+    // Re-render tbody with sortedData
+    renderData(sortedData, lastRenderedRow, 100);
+  }
+
+  function randNum(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+</script>
+
+</html>

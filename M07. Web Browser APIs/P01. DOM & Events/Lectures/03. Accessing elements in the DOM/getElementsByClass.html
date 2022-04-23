@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document.getElementsByClass()</title>
+</head>
+
+<body>
+
+  <div class="test"></div>
+  <div class="red test"></div>
+
+  <div id="main">
+    <div class="test"></div>
+  </div>
+
+  <script>
+    // Get all elements that have a class of 'test':
+    document.getElementsByClassName('test')
+
+    // Get all elements that have both the 'red' and 'test' classes:
+    document.getElementsByClassName('red test')
+
+    // Get all elements that have a class of 'test', inside of an element that has the ID of 'main':
+    document.getElementById('main').getElementsByClassName('test')
+
+    // Get the first element with a class of 'test', or undefined if there is no matching element:
+    document.getElementsByClassName('test')[0]
+  </script>
+</body>
+
+</html>
