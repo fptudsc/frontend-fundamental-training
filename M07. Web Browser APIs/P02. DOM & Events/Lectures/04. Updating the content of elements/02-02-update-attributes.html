@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Attributes</title>
+  <style>
+    .democlass {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body>
+    <a href="https://www.google.com" id="link">This is a link!</a>
+
+    <hr>
+
+    <button onclick="myFunction()">Update attributes</button>
+
+    <script>
+      function myFunction() {
+        const link = document.getElementById('link');
+
+        link.href = 'https://developer.mozilla.org/';
+        link.textContent = 'MDN Web Docs';
+      }
+    </script>
+
+  </body>
+
+</html>

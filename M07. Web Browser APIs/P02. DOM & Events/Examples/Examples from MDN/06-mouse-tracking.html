@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Tracking</title>
+
+  <style>
+    .box {
+      width: 600px;
+      height: 300px;
+      border: 1px solid black;
+      padding: 2px 4px;
+      overflow-y: scroll;
+      overflow-x: auto;
+    }
+
+    .log {
+      margin-top: 8px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div><strong>Log:</strong></div>
+    <div class="log"></div>
+  </div>
+
+  <script>
+    var boxElem = document.querySelector(".box");
+
+    boxElem.addEventListener("mousedown", logEvent);
+    boxElem.addEventListener("mouseup", logEvent);
+    boxElem.addEventListener("click", logEvent);
+    boxElem.addEventListener("mouseenter", logEvent);
+    boxElem.addEventListener("mouseleave", logEvent);
+
+    function log(msg) {
+      var logElem = document.querySelector(".log");
+
+      var time = new Date();
+      var timeStr = time.toLocaleTimeString();
+      logElem.innerHTML += timeStr + ": " + msg + "<br/>";
+      boxElem.scrollBy(0, boxElem.scrollHeight);
+    }
+
+    log("Logging mouse events inside this container...");
+
+    function logEvent(event) {
+      var msg = "Event <strong>" + event.type + "</strong> at <em>" +
+        event.clientX + ", " + event.clientY + "</em>";
+      log(msg);
+    }
+  </script>
+</body>
+
+</html>

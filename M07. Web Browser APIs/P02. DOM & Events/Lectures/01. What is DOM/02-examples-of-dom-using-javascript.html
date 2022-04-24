@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples of DOM using Javascript</title>
+</head>
+<body>
+
+  <p>This is the first paragraph.</p>
+  <p>This is the second paragraph.</p>
+
+  <script type="text/javascript">
+    const paragraphs = document.querySelectorAll("p");
+    // paragraphs[0] is the first <p> element
+    // paragraphs[1] is the second <p> element, etc.
+    alert(paragraphs[0].textContent);
+   </script>
+
+</body>
+</html>
