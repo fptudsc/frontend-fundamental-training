@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+</head>
+<body>
+
+ <header>
+    <a href="#">
+      <img src="./avatar.png" alt="MY BLOG LOGO" width="50px" height="50px">
+      My Portfolio
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Your name</h1>
+      <p>Welcome To My Portfolio</p>
+    </article>
+  </main>
+
+  <article id="about">
+    <h3>About Me</h3>
+    <img src="./avatar.png" alt="Avatar" width="200px" height="200px">
+    <p>Introduce Yourself</p>
+    <p>Name: Your name</p>
+    <p>Date of birth: 01/01/1999</p>
+    <p>More...</p>
+  </article>
+
+  <artcle id="schedule">
+    <h3>Schedule</h3>
+    <table>
+      <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Webnesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+      <tr>
+        <td>Row1 Col1</td>
+        <td>Row1 Col2</td>
+        <td>Row1 Col3</td>
+        <td>Row1 Col4</td>
+        <td>Row1 Col5</td>
+        <td>Row1 Col6</td>
+        <td>Row1 Col7</td>
+      </tr> 
+      <tr>
+        <td>Row2 Col1</td>
+        <td>Row2 Col2</td>
+        <td>Row2 Col3</td>
+        <td>Row2 Col4</td>
+        <td>Row2 Col5</td>
+        <td>Row2 Col6</td>
+        <td>Row2 Col7</td>
+      </tr>
+    </table>
+  </artcle>
+
+  <article>
+    <h3>Bucket List</h3>
+    <ol>
+      <li>Master HTML</li>
+      <li>Master CSS</li>
+      <li>Master JavaScript</li>
+      <li>Master Frontend</li>
+      <li>Become Full stack Developer</li>
+      <li>Become Project Manager</li>
+      <li>Become CTO</li>
+    </ol>
+  </article>
+
+
+  <footer id="contact">
+    <h3>Contact Me</h3>
+    <p>Phone: 1.234.567.890</p>
+    <p>Email: contact@my_portfolio.com</p>
+
+    <form action="/submit.txt" target="_blank">
+      <h3>Send information</h3>
+      <input type="text" placeholder="Name" name="Name">
+      <div>
+        <p>Your favorite language:</p>
+        <input type="checkbox" name="fav_language" value="HTML">
+        <label for="html">HTML</label><br>
+        <input type="checkbox" name="fav_language" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="checkbox" name="fav_language" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+      </div>
+      <div>
+        <p>Gender:</p>
+        <input type="radio" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input type="radio" name="gender" value="female">
+        <label for="female">Female</label><br>
+        <input type="radio" name="gender" value="other">
+        <label for="other">Other</label>
+      </div>
+      <button class="w3-button w3-black" type="submit">SEND</button>
+    </form>
+
+  </footer>
+</body>
+</html>
