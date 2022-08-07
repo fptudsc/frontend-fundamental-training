@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications API</title>
+</head>
+
+<body>
+  <button onclick="requestPermission()">Request Permission</button>
+  <button onclick="sendNotification()">Send Notification</button>
+
+  <script>
+    function requestPermission() {
+      Notification.requestPermission(() => {
+        if (Notification.permission === 'granted') {
+          console.log('Permission granted!');
+        }
+      });
+    }
+
+    function sendNotification() {
+      // Let's check if the browser supports notifications
+      if (!('Notification' in window)) {
+        alert('This browser does not support desktop notification');
+      }
+
+      // Let's check whether notification permissions have already been granted
+      else if (Notification.permission === 'granted') {
+        // If it's okay let's create a notification
+        const notification = new Notification('Hi there!');
+      }
+
+      // Otherwise, we need to ask the user for permission
+      else if (Notification.permission !== 'denied') {
+        alert('Please request permission to send notification!');
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesssing cookie programmatically</title>
+</head>
+
+<body>
+  <button onclick="showCookies()">Show cookies</button>
+  <button onclick="clearOutput()">Clear</button>
+  <div><code id="cookies"></code></div>
+
+  <script>
+    // Set cookie
+    document.cookie = 'yummy_cookie=choco';
+    // Set cookie
+    document.cookie = 'tasty_cookie=strawberry';
+
+    function showCookies() {
+      const output = document.getElementById('cookies');
+      // Get all cookies and display into screen
+      output.textContent = '> ' + document.cookie;
+    }
+
+    function clearOutput() {
+      const output = document.getElementById('cookies');
+      output.textContent = '';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage save text</title>
+</head>
+
+<body>
+  <textarea type="text" name="novel" id="novel"></textarea>
+
+  <script>
+    // Get the text novel that we're going to track
+    let novel = document.getElementById('novel');
+
+    // See if we have an autosave value
+    // (this will only happen if the page is accidentally refreshed/closed)
+    if (localStorage.getItem('autosave')) {
+      // Restore the contents of the text novel
+      novel.value = localStorage.getItem('autosave');
+    }
+
+    // Listen for changes in the text novel
+    novel.addEventListener('change', function () {
+      // And save the results into the local storage object
+      localStorage.setItem('autosave', novel.value);
+    });
+  </script>
+</body>
+
+</html>

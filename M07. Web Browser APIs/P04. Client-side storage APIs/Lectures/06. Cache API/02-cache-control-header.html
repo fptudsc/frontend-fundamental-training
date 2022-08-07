@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cache-Control header</title>
+</head>
+<body>
+  <button onclick="fethData();">Fetch data</button>
+  <div id="output"></div>
+
+  <script>
+    const output = document.querySelector('#output');
+
+    function fethData() {
+      fetch('/data', { cache: 'force-cache' })
+        .then(res => res.json())
+        .then(data => {
+          output.textContent = JSON.stringify(data);
+        });
+    }
+  </script>
+</body>
+</html>
