@@ -1,0 +1,48 @@
+/* What is selector? */
+selectors {
+  color: red;
+}
+
+p {
+  color: red;
+}
+
+/* Element Selector: */
+element {
+  color: red;
+}
+
+/* Class Selector */
+.className {
+  color: red;
+}
+
+/* ID Selector */
+#id {
+  color: red;
+}
+
+/* Atribute Selector */
+input[type="radio"] {
+  color: red;
+}
+
+/* pseudo-class selector */
+selector:pseudo-class {
+  color: red;
+}
+
+/* Pseudo-element */
+selector::pseudo-element {
+  color: red;
+}
+
+/* Combinators */
+/* Descendent selector */
+.parent .child {
+  color: red;
+}
+/* Child selector */
+.parent > .child {
+  color: red;
+}

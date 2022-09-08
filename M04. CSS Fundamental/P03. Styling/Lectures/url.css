@@ -1,0 +1,6 @@
+div {
+  background-image: url(<string>);
+}
+div {
+  background-image: image(<image-tags>? [<image-src>?, <color>?]!);
+}

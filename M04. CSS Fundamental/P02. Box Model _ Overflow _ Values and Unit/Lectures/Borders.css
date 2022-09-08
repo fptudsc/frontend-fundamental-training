@@ -1,0 +1,8 @@
+.box {
+  /* Shorthand */
+  border: width style colors;
+  /* Or they can be targeted separately using -top/-right/-bottom/-left */
+  /* Each side can also has its own styled, width and color */
+  /* Can also set the radius of the border to curves the corners or form a circle using 50% */
+  border-radius: 50%;
+}

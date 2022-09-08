@@ -1,0 +1,13 @@
+.element {
+  position: absolute;
+}
+
+.element {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.parent {
+  position: relative;
+}

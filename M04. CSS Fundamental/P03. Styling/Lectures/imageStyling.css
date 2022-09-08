@@ -1,0 +1,19 @@
+img {
+  object-position: right top;
+  object-fit: none; /* Image doesn't scale to fit the container */
+}
+img {
+  object-fit: fill; /* Stretch the image to fit container - image aspect ratio is changed */
+}
+img {
+  object-fit: contain; /* Preserve the scale of the image */
+}
+img {
+  object-fit: cover; /* Stretch the image to fit container - image aspect ratio is preserved*/
+}
+img {
+  object-fit: none; /* the image is not resized */
+}
+img {
+  object-fit: scale-down; /* sized as if none or contain, whichever is smaller  */
+}

@@ -1,0 +1,9 @@
+.box {
+  /* Full declaration */
+  padding: 20px 10px 20px 10px; /* 20 px top & bottom, 10 px left & right */
+  /* Short hands */
+  padding: 20px 10px; /* Same as above */
+  /* 4-side */
+  padding: 20px; /* 20px on 4-side */
+  /* Or they can be targeted separately using -top/-right/-bottom/-left */
+}
