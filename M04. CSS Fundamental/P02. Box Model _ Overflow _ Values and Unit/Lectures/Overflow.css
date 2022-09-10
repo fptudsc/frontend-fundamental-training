@@ -1,0 +1,19 @@
+.box {
+  /* Default - overflow content is visible */
+  overflow: visible;
+}
+
+.box {
+  /* Hide the overflow content completely */
+  overflow: hidden;
+}
+
+.box {
+  /* Always showing scrollbars (horizontal and vertical) even when not overflow */
+  overflow: scroll;
+}
+
+.box {
+  /* Only shows scrollbar when overflows */
+  overflow: auto;
+}

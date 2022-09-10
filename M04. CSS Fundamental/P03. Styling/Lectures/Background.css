@@ -1,0 +1,31 @@
+/* Comment out others except one to test */
+body {
+  background-color: coral;
+}
+body {
+  background-color: #92a8d1;
+}
+body {
+  background-color: rgb(201, 76, 76);
+}
+body {
+  background-color: rgba(201, 76, 76, 0.3);
+}
+body {
+  background-color: hsl(89, 43%, 51%);
+}
+body {
+  background-color: hsla(89, 43%, 51%, 0.3);
+}
+
+body {
+  background-image: url("paper.gif");
+}
+
+body {
+  background-position: value;
+}
+
+body {
+  background-image: url("img_tree.gif"), url("paper.gif");
+}

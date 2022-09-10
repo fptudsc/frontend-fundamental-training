@@ -1,0 +1,10 @@
+div {
+  background-size: accepts cover | contain | percentage | absolute;
+}
+div {
+  background-position: top | left | center | horizontal & vertical | horizontal
+    & distance & vertical & distance;
+}
+div {
+  background-repeat: repeat-x | repeat-y | repeat | space | round | no-repeat;
+}

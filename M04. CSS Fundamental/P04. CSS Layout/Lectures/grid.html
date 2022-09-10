@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="item item-1"></div>
+  <div class="item item-2"></div>
+  <div class="item item-3"></div>
+</div>
+<div class="container">
+  <div class="item"></div>
+  <div class="item">
+    <p class="sub-item"></p>
+  </div>
+  <div class="item"></div>
+</div>
+
+<style>
+  .container {
+    display: grid | inline-grid;
+  }
+  .container {
+    grid-template-columns: ... ...;
+
+    grid-template-rows: ... ...;
+  }
+  .container {
+    grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+  }
+  .container {
+    grid-template-areas:
+      "<grid-area-name> | . | none | ..."
+      "...";
+  }
+  .item-a {
+    grid-area: header;
+  }
+  .item-b {
+    grid-area: main;
+  }
+  .item-c {
+    grid-area: sidebar;
+  }
+  .item-d {
+    grid-area: footer;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header header header header"
+      "main main . sidebar"
+      "footer footer footer footer";
+  }
+  .container {
+    grid-template:
+      [row1-start] "header header header" 25px [row1-end]
+      [row2-start] "footer footer footer" 25px [row2-end]
+      / auto 50px auto;
+  }
+  .container {
+    /* standard */
+    column-gap: <line-size>;
+    row-gap: <line-size>;
+
+    /* old */
+    grid-column-gap: <line-size>;
+    grid-row-gap: <line-size>;
+  }
+  .container {
+    grid-template-columns: 100px 50px 100px;
+    grid-template-rows: 80px auto 80px;
+    column-gap: 10px;
+    row-gap: 15px;
+  }
+  .container {
+    /* standard */
+    gap: <grid-row-gap> <grid-column-gap>;
+
+    /* old */
+    grid-gap: <grid-row-gap> <grid-column-gap>;
+  }
+  .center {
+    display: grid;
+    place-items: center;
+  }
+
+  .item-a {
+    grid-column-start: 2;
+    grid-column-end: five;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+  }
+  .item-b {
+    grid-column-start: 1;
+    grid-column-end: span col4-start;
+    grid-row-start: 2;
+    grid-row-end: span 2;
+  }
+  .item {
+    grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+    grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+  }
+  .item-c {
+    grid-column: 3 / span 2;
+    grid-row: third-line / 4;
+  }
+  .item {
+    grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+  }
+  .item-d {
+    grid-area: 1 / col4-start / last-line / 6;
+  }
+  .item-a {
+    place-self: center;
+  }
+</style>

@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+}
+
+.container {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+.container {
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+.container {
+  flex-flow: column wrap;
+}
+.container {
+  justify-content: flex-start | flex-end | center | space-between | space-around
+    | space-evenly | start | end | left | right... + safe | unsafe;
+}
+.container {
+  align-items: stretch | flex-start | flex-end | center | baseline | first
+    baseline | last baseline | start | end | self-start | self-end +... safe | unsafe;
+}
+.container {
+  align-content: flex-start | flex-end | center | space-between | space-around |
+    space-evenly | stretch | start | end | baseline | first baseline | last
+    baseline +... safe | unsafe;
+}
+.container {
+  display: flex;
+  gap: 10px;
+  gap: 10px 20px; /* row-gap column gap */
+  row-gap: 10px;
+  column-gap: 20px;
+}
+.item {
+  order: 5; /* default is 0 */
+}
+.item {
+  flex-grow: 4; /* default 0 */
+}
+.item {
+  flex-shrink: 3; /* default 1 */
+}
+.item {
+  flex-basis: | auto; /* default auto */
+}
+.item {
+  flex: none | [ < "flex-grow" > < "flex-shrink" >? || < "flex-basis" > ];
+}
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
